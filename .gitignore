@@ -1,0 +1,8 @@
+/.vs
+/Engine/Binaries/Win32
+/Engine/Binaries/Win64
+Intermediate
+Saved
+/Engine/Programs/UnrealBuildTool
+/UE4.sln
+obj
