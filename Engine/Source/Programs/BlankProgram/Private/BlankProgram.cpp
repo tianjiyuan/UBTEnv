@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	cout << "Hello Wolrd" << endl;
+	cout << "Hello World!" << endl;
 
 	system("pause");
 }
