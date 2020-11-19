@@ -19,25 +19,25 @@ public class Core : ModuleRules
 
 		PrivateIncludePaths.AddRange(
 			new string[] {
-				"Developer/DerivedDataCache/Public",
-				"Runtime/SynthBenchmark/Public",
+				//"Developer/DerivedDataCache/Public",
+				//"Runtime/SynthBenchmark/Public",
 				"Runtime/Core/Private",
 				"Runtime/Core/Private/Misc",
                 "Runtime/Core/Private/Internationalization",
 				"Runtime/Core/Private/Internationalization/Cultures",
-				"Runtime/Engine/Public",
+				//"Runtime/Engine/Public",
 			}
 			);
 
-		PrivateIncludePathModuleNames.AddRange(
-			new string[] {
-				"TargetPlatform",
-				"DerivedDataCache",
-                "InputDevice",
-                "Analytics",
-				"RHI"
-			}
-			);
+		//PrivateIncludePathModuleNames.AddRange(
+		//	new string[] {
+		//		"TargetPlatform",
+		//		"DerivedDataCache",
+  //              "InputDevice",
+  //              "Analytics",
+		//		"RHI"
+		//	}
+		//	);
 
 		if (Target.bBuildEditor == true)
 		{
