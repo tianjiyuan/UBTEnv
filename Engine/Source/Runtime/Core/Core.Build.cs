@@ -12,7 +12,7 @@ public class Core : ModuleRules
 
 		SharedPCHHeaderFile = "Public/CoreSharedPCH.h";
 
-		PrivateDependencyModuleNames.Add("BuildSettings");
+		PublicDependencyModuleNames.Add("BuildSettings");
 
 		PublicDependencyModuleNames.Add("TraceLog");
 		PublicIncludePaths.Add("Runtime/TraceLog/Public");

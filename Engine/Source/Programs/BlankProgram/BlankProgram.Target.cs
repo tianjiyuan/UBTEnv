@@ -14,6 +14,6 @@ public class BlankProgramTarget : TargetRules
         bCompileAgainstEngine = false;
 
         // UnrealHeaderTool is a console application, not a Windows app (sets entry point to main(), instead of WinMain())
-        bIsBuildingConsoleApplication = true;
+        //bIsBuildingConsoleApplication = true;
     }
 }

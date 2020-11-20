@@ -8,6 +8,7 @@ public class BuildSettings : ModuleRules
 	public BuildSettings(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PrivateIncludePathModuleNames.Add("Core");
+		PrivateIncludePathModuleNames.Add("ApplicationCore");
 
 		bRequiresImplementModule = false;
 
