@@ -6,6 +6,5 @@ public class BlankProgram : ModuleRules
         bUseUnity = false;
 
         PrivateDependencyModuleNames.Add("Core");
-        PrivateDependencyModuleNames.Add("ApplicationCore");
     }
 }
