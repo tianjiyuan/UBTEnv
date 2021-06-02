@@ -46,7 +46,7 @@ public:
 	 * Also returns the pointer, so that the caller only needs to call this function to take control
 	 * of the memory.
 	 */
-	FORCEINLINE uint8* ReleaseOwnership()
+	/*FORCEINLINE*/ uint8* ReleaseOwnership()
 	{
 		return Data.ReleaseOwnership();
 	}

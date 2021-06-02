@@ -44,12 +44,12 @@ struct CORE_API FCustomVersion
 	int32 ReferenceCount;
 
 	/** Constructor. */
-	FORCEINLINE FCustomVersion()
+	/*FORCEINLINE*/ FCustomVersion()
 	{
 	}
 
 	/** Helper constructor. */
-	FORCEINLINE FCustomVersion(FGuid InKey, int32 InVersion, FName InFriendlyName)
+	/*FORCEINLINE*/ FCustomVersion(FGuid InKey, int32 InVersion, FName InFriendlyName)
 	: Key           (InKey)
 	, Version       (InVersion)
 	, ReferenceCount(1)
@@ -58,13 +58,13 @@ struct CORE_API FCustomVersion
 	}
 
 	/** Equality comparison operator for Key */
-	FORCEINLINE bool operator==(FGuid InKey) const
+	/*FORCEINLINE*/ bool operator==(FGuid InKey) const
 	{
 		return Key == InKey;
 	}
 
 	/** Inequality comparison operator for Key */
-	FORCEINLINE bool operator!=(FGuid InKey) const
+	/*FORCEINLINE*/ bool operator!=(FGuid InKey) const
 	{
 		return Key != InKey;
 	}
@@ -95,7 +95,7 @@ class CORE_API FCustomVersionContainer
 
 public:
 	/** Gets available custom versions in this container. */
-	FORCEINLINE const FCustomVersionArray& GetAllVersions() const
+	/*FORCEINLINE*/ const FCustomVersionArray& GetAllVersions() const
 	{
 		return Versions;
 	}

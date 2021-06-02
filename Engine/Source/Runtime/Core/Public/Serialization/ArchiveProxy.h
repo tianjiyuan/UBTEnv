@@ -242,7 +242,7 @@ public:
 	}
 #endif
 
-	FORCEINLINE void SetSerializedProperty(FProperty* InProperty) override
+	/*FORCEINLINE*/ void SetSerializedProperty(FProperty* InProperty) override
 	{
 		FArchive::SetSerializedProperty(InProperty);
 		InnerArchive.SetSerializedProperty(InProperty);
@@ -255,26 +255,26 @@ public:
 	}
 
 	/** Pushes editor-only marker to the stack of currently serialized properties */
-	virtual FORCEINLINE void PushSerializedProperty(class FProperty* InProperty, const bool bIsEditorOnlyProperty)
+	virtual /*FORCEINLINE*/ void PushSerializedProperty(class FProperty* InProperty, const bool bIsEditorOnlyProperty)
 	{
 		FArchive::PushSerializedProperty(InProperty, bIsEditorOnlyProperty);
 		InnerArchive.PushSerializedProperty(InProperty, bIsEditorOnlyProperty);
 	}
 	/** Pops editor-only marker from the stack of currently serialized properties */
-	virtual FORCEINLINE void PopSerializedProperty(class FProperty* InProperty, const bool bIsEditorOnlyProperty)
+	virtual /*FORCEINLINE*/ void PopSerializedProperty(class FProperty* InProperty, const bool bIsEditorOnlyProperty)
 	{
 		FArchive::PopSerializedProperty(InProperty, bIsEditorOnlyProperty);
 		InnerArchive.PopSerializedProperty(InProperty, bIsEditorOnlyProperty);
 	}
 #if WITH_EDITORONLY_DATA
 	/** Returns true if the stack of currently serialized properties contains an editor-only property */
-	virtual FORCEINLINE bool IsEditorOnlyPropertyOnTheStack() const
+	virtual /*FORCEINLINE*/ bool IsEditorOnlyPropertyOnTheStack() const
 	{
 		return InnerArchive.IsEditorOnlyPropertyOnTheStack();
 	}
 #endif
 
-	virtual FORCEINLINE bool IsProxyOf(FArchive* InOther) const
+	virtual /*FORCEINLINE*/ bool IsProxyOf(FArchive* InOther) const
 	{
 		return InOther == this || InOther == &InnerArchive || InnerArchive.IsProxyOf(InOther);
 	}

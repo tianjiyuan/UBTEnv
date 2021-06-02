@@ -220,7 +220,7 @@ protected:
 
 private:
 
-	FORCEINLINE uint8 Shift(uint8 Cnt)
+	/*FORCEINLINE*/ uint8 Shift(uint8 Cnt)
 	{
 		return (uint8)(1<<Cnt);
 	}

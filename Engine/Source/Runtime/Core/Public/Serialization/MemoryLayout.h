@@ -182,7 +182,7 @@ template<typename T, bool HasNonTrivialDestructor>
 struct TAssignDestroyHelper
 {
 	UE_STATIC_ONLY(TAssignDestroyHelper);
-	static FORCEINLINE void Do(FTypeLayoutDesc& TypeDesc) {}
+	static /*FORCEINLINE*/ void Do(FTypeLayoutDesc& TypeDesc) {}
 };
 
 template<typename T>
@@ -195,7 +195,7 @@ struct TAssignDestroyHelper<T, true>
 		static_cast<T*>(Object)->~T();
 	}
 
-	static FORCEINLINE void Do(FTypeLayoutDesc& TypeDesc) { TypeDesc.DestroyFunc = &Destroy; }
+	static /*FORCEINLINE*/ void Do(FTypeLayoutDesc& TypeDesc) { TypeDesc.DestroyFunc = &Destroy; }
 };
 
 
@@ -281,25 +281,25 @@ namespace Freeze
 	CORE_API void IntrinsicWriteMemoryImage(FMemoryImageWriter& Writer, void*, const FTypeLayoutDesc&);
 
 	template<typename T>
-	FORCEINLINE void IntrinsicWriteMemoryImage(FMemoryImageWriter& Writer, const T& Object, const FTypeLayoutDesc& TypeDesc)
+	/*FORCEINLINE*/ void IntrinsicWriteMemoryImage(FMemoryImageWriter& Writer, const T& Object, const FTypeLayoutDesc& TypeDesc)
 	{
 		IntrinsicWriteMemoryImage(Writer, &Object, sizeof(T));
 	}
 
 	template<typename T>
-	FORCEINLINE void IntrinsicUnfrozenCopy(const FMemoryUnfreezeContent& Context, const T& Object, void* OutDst)
+	/*FORCEINLINE*/ void IntrinsicUnfrozenCopy(const FMemoryUnfreezeContent& Context, const T& Object, void* OutDst)
 	{
 		new(OutDst) T(Object);
 	}
 
 	template<typename T>
-	FORCEINLINE uint32 IntrinsicAppendHash(const T* DummyObject, const FTypeLayoutDesc& TypeDesc, const FPlatformTypeLayoutParameters& LayoutParams, FSHA1& Hasher)
+	/*FORCEINLINE*/ uint32 IntrinsicAppendHash(const T* DummyObject, const FTypeLayoutDesc& TypeDesc, const FPlatformTypeLayoutParameters& LayoutParams, FSHA1& Hasher)
 	{
 		return DefaultAppendHash(TypeDesc, LayoutParams, Hasher);
 	}
 
 	template<typename T>
-	FORCEINLINE uint32 IntrinsicGetTargetAlignment(const T* DummyObject, const FTypeLayoutDesc& TypeDesc, const FPlatformTypeLayoutParameters& LayoutParams)
+	/*FORCEINLINE*/ uint32 IntrinsicGetTargetAlignment(const T* DummyObject, const FTypeLayoutDesc& TypeDesc, const FPlatformTypeLayoutParameters& LayoutParams)
 	{
 		return TypeDesc.Alignment;
 	}
@@ -370,13 +370,13 @@ struct TProvidesStaticStruct
 template <typename T, bool bUsePropertyFreezing=TUsePropertyFreezing<T>::Value>
 struct TGetFreezeImageHelper
 {
-	static FORCEINLINE FTypeLayoutDesc::FWriteFrozenMemoryImageFunc* Do() { return &Freeze::DefaultWriteMemoryImage; }
+	static /*FORCEINLINE*/ FTypeLayoutDesc::FWriteFrozenMemoryImageFunc* Do() { return &Freeze::DefaultWriteMemoryImage; }
 };
 
 template <typename T, bool bProvidesStaticStruct=TProvidesStaticStruct<T>::Value>
 struct TGetFreezeImageFieldHelper
 {
-	static FORCEINLINE FFieldLayoutDesc::FWriteFrozenMemoryImageFunc* Do() { return &Freeze::DefaultWriteMemoryImageField; }
+	static /*FORCEINLINE*/ FFieldLayoutDesc::FWriteFrozenMemoryImageFunc* Do() { return &Freeze::DefaultWriteMemoryImageField; }
 };
 
 template<typename T, typename BaseType>
@@ -397,7 +397,7 @@ static void InternalInitializeBaseHelper(FTypeLayoutDesc& TypeDesc)
 }
 
 template<typename T>
-static FORCEINLINE void InternalInitializeBasesHelper(FTypeLayoutDesc& TypeDesc) {}
+static /*FORCEINLINE*/ void InternalInitializeBasesHelper(FTypeLayoutDesc& TypeDesc) {}
 
 template<typename T, typename BaseType, typename ...RemainingBaseTypes>
 static void InternalInitializeBasesHelper(FTypeLayoutDesc& TypeDesc)
@@ -427,7 +427,7 @@ template<typename T>
 struct TInitializeBaseHelper<T, void>
 {
 	UE_STATIC_ONLY(TInitializeBaseHelper);
-	static FORCEINLINE void Initialize(FTypeLayoutDesc& TypeDesc) {}
+	static /*FORCEINLINE*/ void Initialize(FTypeLayoutDesc& TypeDesc) {}
 };
 
 namespace Freeze
@@ -557,7 +557,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	static const int CounterBase = __COUNTER__; \
 	public: using DerivedType = PREPROCESSOR_REMOVE_OPTIONAL_PARENS(T); \
 	static const ETypeLayoutInterface::Type InterfaceType = ETypeLayoutInterface::InInterface; \
-	UE_DECLARE_INTERNAL_LINK_BASE(InternalLinkType) { UE_STATIC_ONLY(InternalLinkType); static FORCEINLINE void Initialize(FTypeLayoutDesc& TypeDesc) {} }
+	UE_DECLARE_INTERNAL_LINK_BASE(InternalLinkType) { UE_STATIC_ONLY(InternalLinkType); static /*FORCEINLINE*/ void Initialize(FTypeLayoutDesc& TypeDesc) {} }
 
 #define INTERNAL_DECLARE_INLINE_TYPE_LAYOUT(T, InInterface) \
 	public: static FTypeLayoutDesc& StaticGetTypeLayout() { \

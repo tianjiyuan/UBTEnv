@@ -4,6 +4,27 @@
 #include "Containers/Set.h"
 #include "Containers/UnrealString.h"
 
+
+/*FORCEINLINE*/ FArchive& UE4StructuredArchive_Private::FSlotBase::GetUnderlyingArchive() const
+{
+	return Ar.GetUnderlyingArchive();
+}
+
+/*FORCEINLINE*/ const FArchiveState& UE4StructuredArchive_Private::FSlotBase::GetArchiveState() const
+{
+	return Ar.GetArchiveState();
+}
+
+/*FORCEINLINE*/ bool FStructuredArchiveSlot::IsFilled() const
+{
+#if WITH_TEXT_ARCHIVE_SUPPORT
+	return Ar.CurrentSlotElementId != ElementId;
+#else
+	return true;
+#endif
+}
+
+
 #if WITH_TEXT_ARCHIVE_SUPPORT
 
 //////////// FStructuredArchive::FContainer ////////////

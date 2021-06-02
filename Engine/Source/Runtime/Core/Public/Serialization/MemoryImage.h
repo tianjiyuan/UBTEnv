@@ -400,20 +400,20 @@ public:
 	~FMemoryImageAllocatorBase();
 
 	// FContainerAllocatorInterface
-	FORCEINLINE FScriptContainerElement* GetAllocation() const
+	/*FORCEINLINE*/ FScriptContainerElement* GetAllocation() const
 	{
 		return Data.Get();
 	}
 
-	FORCEINLINE SIZE_T GetAllocatedSize(int32 NumAllocatedElements, SIZE_T NumBytesPerElement) const
+	/*FORCEINLINE*/ SIZE_T GetAllocatedSize(int32 NumAllocatedElements, SIZE_T NumBytesPerElement) const
 	{
 		return NumAllocatedElements * NumBytesPerElement;
 	}
-	FORCEINLINE bool HasAllocation()
+	/*FORCEINLINE*/ bool HasAllocation()
 	{
 		return Data.IsValid();
 	}
-	FORCEINLINE FMemoryImagePtrInt GetFrozenOffsetFromThis() const { return Data.GetFrozenOffsetFromThis(); }
+	/*FORCEINLINE*/ FMemoryImagePtrInt GetFrozenOffsetFromThis() const { return Data.GetFrozenOffsetFromThis(); }
 
 	void ResizeAllocation(int32 PreviousNumElements, int32 NumElements, SIZE_T NumBytesPerElement, uint32 Alignment);
 	void WriteMemoryImage(FMemoryImageWriter& Writer, const FTypeLayoutDesc& TypeDesc, int32 NumAllocatedElements, uint32 Alignment) const;
@@ -440,28 +440,28 @@ public:
 		/** Default constructor. */
 		ForAnyElementType() = default;
 
-		FORCEINLINE SizeType GetInitialCapacity() const
+		/*FORCEINLINE*/ SizeType GetInitialCapacity() const
 		{
 			return 0;
 		}
-		FORCEINLINE int32 CalculateSlackReserve(int32 NumElements, int32 NumBytesPerElement) const
+		/*FORCEINLINE*/ int32 CalculateSlackReserve(int32 NumElements, int32 NumBytesPerElement) const
 		{
 			return DefaultCalculateSlackReserve(NumElements, NumBytesPerElement, true, Alignment);
 		}
-		FORCEINLINE int32 CalculateSlackShrink(int32 NumElements, int32 NumAllocatedElements, int32 NumBytesPerElement) const
+		/*FORCEINLINE*/ int32 CalculateSlackShrink(int32 NumElements, int32 NumAllocatedElements, int32 NumBytesPerElement) const
 		{
 			return DefaultCalculateSlackShrink(NumElements, NumAllocatedElements, NumBytesPerElement, true, Alignment);
 		}
-		FORCEINLINE int32 CalculateSlackGrow(int32 NumElements, int32 NumAllocatedElements, int32 NumBytesPerElement) const
+		/*FORCEINLINE*/ int32 CalculateSlackGrow(int32 NumElements, int32 NumAllocatedElements, int32 NumBytesPerElement) const
 		{
 			return DefaultCalculateSlackGrow(NumElements, NumAllocatedElements, NumBytesPerElement, true, Alignment);
 		}
-		FORCEINLINE void ResizeAllocation(int32 PreviousNumElements, int32 NumElements, SIZE_T NumBytesPerElement)
+		/*FORCEINLINE*/ void ResizeAllocation(int32 PreviousNumElements, int32 NumElements, SIZE_T NumBytesPerElement)
 		{
 			FMemoryImageAllocatorBase::ResizeAllocation(PreviousNumElements, NumElements, NumBytesPerElement, Alignment);
 		}
 
-		FORCEINLINE void WriteMemoryImage(FMemoryImageWriter& Writer, const FTypeLayoutDesc& TypeDesc, int32 NumAllocatedElements) const
+		/*FORCEINLINE*/ void WriteMemoryImage(FMemoryImageWriter& Writer, const FTypeLayoutDesc& TypeDesc, int32 NumAllocatedElements) const
 		{
 			FMemoryImageAllocatorBase::WriteMemoryImage(Writer, TypeDesc, NumAllocatedElements, Alignment);
 		}
@@ -472,7 +472,7 @@ public:
 	{
 	public:
 		ForElementType() {}
-		FORCEINLINE ElementType* GetAllocation() const { return (ElementType*)ForAnyElementType::GetAllocation(); }
+		/*FORCEINLINE*/ ElementType* GetAllocation() const { return (ElementType*)ForAnyElementType::GetAllocation(); }
 	};
 };
 
@@ -523,13 +523,13 @@ public:
 	FMemoryImageString& operator=(FMemoryImageString&&) = default;
 	FMemoryImageString& operator=(const FMemoryImageString&) = default;
 
-	FORCEINLINE FMemoryImageString(const FString& Other) : Data(Other.GetCharArray()) {}
+	/*FORCEINLINE*/ FMemoryImageString(const FString& Other) : Data(Other.GetCharArray()) {}
 
 	template <
 		typename CharType,
 		typename = typename TEnableIf<TIsCharType<CharType>::Value>::Type // This TEnableIf is to ensure we don't instantiate this constructor for non-char types, like id* in Obj-C
 	>
-		FORCEINLINE FMemoryImageString(const CharType* Src)
+		/*FORCEINLINE*/ FMemoryImageString(const CharType* Src)
 	{
 		if (Src && *Src)
 		{
@@ -540,17 +540,17 @@ public:
 		}
 	}
 
-	FORCEINLINE operator FString() const { return FString(Len(), Data.GetData()); }
+	/*FORCEINLINE*/ operator FString() const { return FString(Len(), Data.GetData()); }
 
-	FORCEINLINE const TCHAR* operator*() const
+	/*FORCEINLINE*/ const TCHAR* operator*() const
 	{
 		return Data.Num() ? Data.GetData() : TEXT("");
 	}
 
-	FORCEINLINE bool IsEmpty() const { return Data.Num() <= 1; }
-	FORCEINLINE SIZE_T GetAllocatedSize() const { return Data.GetAllocatedSize(); }
+	/*FORCEINLINE*/ bool IsEmpty() const { return Data.Num() <= 1; }
+	/*FORCEINLINE*/ SIZE_T GetAllocatedSize() const { return Data.GetAllocatedSize(); }
 
-	FORCEINLINE int32 Len() const
+	/*FORCEINLINE*/ int32 Len() const
 	{
 		return Data.Num() ? Data.Num() - 1 : 0;
 	}

@@ -115,7 +115,7 @@ public:
 		ArIsError = true;
 	}
 
-	FORCEINLINE bool IsByteSwapping()
+	/*FORCEINLINE*/ bool IsByteSwapping()
 	{
 	#if PLATFORM_LITTLE_ENDIAN
 		bool SwapBytes = ArForceByteSwapping;
@@ -151,27 +151,27 @@ public:
 		return nullptr;
 	}
 
-	FORCEINLINE int32 UE4Ver() const
+	/*FORCEINLINE*/ int32 UE4Ver() const
 	{
 		return ArUE4Ver;
 	}
 
-	FORCEINLINE int32 LicenseeUE4Ver() const
+	/*FORCEINLINE*/ int32 LicenseeUE4Ver() const
 	{
 		return ArLicenseeUE4Ver;
 	}
 
-	FORCEINLINE FEngineVersionBase EngineVer() const
+	/*FORCEINLINE*/ FEngineVersionBase EngineVer() const
 	{
 		return ArEngineVer;
 	}
 
-	FORCEINLINE uint32 EngineNetVer() const
+	/*FORCEINLINE*/ uint32 EngineNetVer() const
 	{
 		return ArEngineNetVer;
 	}
 
-	FORCEINLINE uint32 GameNetVer() const
+	/*FORCEINLINE*/ uint32 GameNetVer() const
 	{
 		return ArGameNetVer;
 	}
@@ -184,17 +184,17 @@ public:
 	 */
 	int32 CustomVer(const struct FGuid& Key) const;
 
-	FORCEINLINE bool IsLoading() const
+	/*FORCEINLINE*/ bool IsLoading() const
 	{
 		return ArIsLoading;
 	}
 
-	FORCEINLINE bool IsSaving() const
+	/*FORCEINLINE*/ bool IsSaving() const
 	{
 		return ArIsSaving;
 	}
 
-	FORCEINLINE bool IsTransacting() const
+	/*FORCEINLINE*/ bool IsTransacting() const
 	{
 		if (FPlatformProperties::HasEditorOnlyData())
 		{
@@ -206,132 +206,132 @@ public:
 		}
 	}
 
-	FORCEINLINE bool IsTextFormat() const
+	/*FORCEINLINE*/ bool IsTextFormat() const
 	{
 		return (ArIsTextFormat && WITH_TEXT_ARCHIVE_SUPPORT);
 	}
 
-	FORCEINLINE bool WantBinaryPropertySerialization() const
+	/*FORCEINLINE*/ bool WantBinaryPropertySerialization() const
 	{
 		return ArWantBinaryPropertySerialization;
 	}
 
-	FORCEINLINE bool UseUnversionedPropertySerialization() const
+	/*FORCEINLINE*/ bool UseUnversionedPropertySerialization() const
 	{
 		return ArUseUnversionedPropertySerialization;
 	}
 
-	FORCEINLINE bool IsForcingUnicode() const
+	/*FORCEINLINE*/ bool IsForcingUnicode() const
 	{
 		return ArForceUnicode;
 	}
 
-	FORCEINLINE bool IsPersistent() const
+	/*FORCEINLINE*/ bool IsPersistent() const
 	{
 		return ArIsPersistent;
 	}
 
-	FORCEINLINE bool IsError() const
+	/*FORCEINLINE*/ bool IsError() const
 	{
 		return ArIsError;
 	}
 
-	FORCEINLINE bool IsCriticalError() const
+	/*FORCEINLINE*/ bool IsCriticalError() const
 	{
 		return ArIsCriticalError;
 	}
 
-	FORCEINLINE bool ContainsCode() const
+	/*FORCEINLINE*/ bool ContainsCode() const
 	{
 		return ArContainsCode;
 	}
 
-	FORCEINLINE bool ContainsMap() const
+	/*FORCEINLINE*/ bool ContainsMap() const
 	{
 		return ArContainsMap;
 	}
 
-	FORCEINLINE bool RequiresLocalizationGather() const
+	/*FORCEINLINE*/ bool RequiresLocalizationGather() const
 	{
 		return ArRequiresLocalizationGather;
 	}
 
-	FORCEINLINE bool ForceByteSwapping() const
+	/*FORCEINLINE*/ bool ForceByteSwapping() const
 	{
 		return ArForceByteSwapping;
 	}
 
-	FORCEINLINE bool IsSerializingDefaults() const
+	/*FORCEINLINE*/ bool IsSerializingDefaults() const
 	{
 		return (ArSerializingDefaults > 0) ? true : false;
 	}
 
-	FORCEINLINE bool IsIgnoringArchetypeRef() const
+	/*FORCEINLINE*/ bool IsIgnoringArchetypeRef() const
 	{
 		return ArIgnoreArchetypeRef;
 	}
 
-	FORCEINLINE bool DoDelta() const
+	/*FORCEINLINE*/ bool DoDelta() const
 	{
 		return !ArNoDelta;
 	}
 
-	FORCEINLINE bool DoIntraPropertyDelta() const
+	/*FORCEINLINE*/ bool DoIntraPropertyDelta() const
 	{
 		return !ArNoIntraPropertyDelta;
 	}
 
-	FORCEINLINE bool IsIgnoringOuterRef() const
+	/*FORCEINLINE*/ bool IsIgnoringOuterRef() const
 	{
 		return ArIgnoreOuterRef;
 	}
 
-	FORCEINLINE bool IsIgnoringClassGeneratedByRef() const
+	/*FORCEINLINE*/ bool IsIgnoringClassGeneratedByRef() const
 	{
 		return ArIgnoreClassGeneratedByRef;
 	}
 
-	FORCEINLINE bool IsIgnoringClassRef() const
+	/*FORCEINLINE*/ bool IsIgnoringClassRef() const
 	{
 		return ArIgnoreClassRef;
 	}
 
-	FORCEINLINE bool IsAllowingLazyLoading() const
+	/*FORCEINLINE*/ bool IsAllowingLazyLoading() const
 	{
 		return ArAllowLazyLoading;
 	}
 
-	FORCEINLINE bool IsObjectReferenceCollector() const
+	/*FORCEINLINE*/ bool IsObjectReferenceCollector() const
 	{
 		return ArIsObjectReferenceCollector;
 	}
 
-	FORCEINLINE bool IsModifyingWeakAndStrongReferences() const
+	/*FORCEINLINE*/ bool IsModifyingWeakAndStrongReferences() const
 	{
 		return ArIsModifyingWeakAndStrongReferences;
 	}
 
-	FORCEINLINE bool IsCountingMemory() const
+	/*FORCEINLINE*/ bool IsCountingMemory() const
 	{
 		return ArIsCountingMemory;
 	}
 
-	FORCEINLINE uint32 GetPortFlags() const
+	/*FORCEINLINE*/ uint32 GetPortFlags() const
 	{
 		return ArPortFlags;
 	}
 
-	FORCEINLINE bool HasAnyPortFlags(uint32 Flags) const
+	/*FORCEINLINE*/ bool HasAnyPortFlags(uint32 Flags) const
 	{
 		return ((ArPortFlags & Flags) != 0);
 	}
 
-	FORCEINLINE bool HasAllPortFlags(uint32 Flags) const
+	/*FORCEINLINE*/ bool HasAllPortFlags(uint32 Flags) const
 	{
 		return ((ArPortFlags & Flags) == Flags);
 	}
 
-	FORCEINLINE uint32 GetDebugSerializationFlags() const
+	/*FORCEINLINE*/ uint32 GetDebugSerializationFlags() const
 	{
 #if WITH_EDITOR
 		return ArDebugSerializationFlags;
@@ -340,12 +340,12 @@ public:
 #endif
 	}
 
-	FORCEINLINE bool ShouldSkipBulkData() const
+	/*FORCEINLINE*/ bool ShouldSkipBulkData() const
 	{
 		return ArShouldSkipBulkData;
 	}
 
-	FORCEINLINE int64 GetMaxSerializeSize() const
+	/*FORCEINLINE*/ int64 GetMaxSerializeSize() const
 	{
 		return ArMaxSerializeSize;
 	}
@@ -443,7 +443,7 @@ public:
 	/**
 	 * Whether or not this archive is serializing data being sent/received by the netcode
 	 */
-	FORCEINLINE bool IsNetArchive() const
+	/*FORCEINLINE*/ bool IsNetArchive() const
 	{
 		return ArIsNetArchive;
 	}
@@ -453,7 +453,7 @@ public:
 	 *
 	 * @return true if the archive is used for cooking, false otherwise.
 	 */
-	FORCEINLINE bool IsCooking() const
+	/*FORCEINLINE*/ bool IsCooking() const
 	{
 		check(!CookingTargetPlatform || (!IsLoading() && !IsTransacting() && IsSaving()));
 
@@ -465,7 +465,7 @@ public:
 	 *
 	 * @return Target platform.
 	 */
-	FORCEINLINE const ITargetPlatform* CookingTarget() const
+	/*FORCEINLINE*/ const ITargetPlatform* CookingTarget() const
 	{
 		return CookingTargetPlatform;
 	}
@@ -475,7 +475,7 @@ public:
 	 *
 	 * @param InCookingTarget The target platform to set.
 	 */
-	FORCEINLINE void SetCookingTarget(const ITargetPlatform* InCookingTarget)
+	/*FORCEINLINE*/ void SetCookingTarget(const ITargetPlatform* InCookingTarget)
 	{
 		CookingTargetPlatform = InCookingTarget;
 	}
@@ -515,7 +515,7 @@ public:
 	 *
 	 * @return Pointer to the property that is currently being serialized
 	 */
-	FORCEINLINE class FProperty* GetSerializedProperty() const
+	/*FORCEINLINE*/ class FProperty* GetSerializedProperty() const
 	{
 		return SerializedProperty;
 	}
@@ -530,7 +530,7 @@ public:
 	 * Get the raw serialized property chain for this archive
 	 * @note Accessing this directly can avoid an array allocation depending on your use-case
 	 */
-	FORCEINLINE const FArchiveSerializedPropertyChain* GetSerializedPropertyChain() const
+	/*FORCEINLINE*/ const FArchiveSerializedPropertyChain* GetSerializedPropertyChain() const
 	{
 		return SerializedPropertyChain;
 	}
@@ -576,11 +576,11 @@ public:
 		const uint8* StartFastPathLoadBuffer;
 		const uint8* EndFastPathLoadBuffer;
 		const uint8* OriginalFastPathLoadBuffer;
-		FORCEINLINE FFastPathLoadBuffer()
+		/*FORCEINLINE*/ FFastPathLoadBuffer()
 		{
 			Reset();
 		}
-		FORCEINLINE void Reset()
+		/*FORCEINLINE*/ void Reset()
 		{
 			StartFastPathLoadBuffer = nullptr;
 			EndFastPathLoadBuffer = nullptr;
@@ -875,7 +875,7 @@ public:
 	 *
 	 * @param InObject	The value to assign to the pointer
 	 */
-	FORCEINLINE TCheckedObjPtr& operator = (T* InObject)
+	/*FORCEINLINE*/ TCheckedObjPtr& operator = (T* InObject)
 	{
 		Object = InObject;
 
@@ -887,7 +887,7 @@ public:
 	 *
 	 * @return	Returns the object pointer
 	 */
-	FORCEINLINE T* operator -> () const
+	/*FORCEINLINE*/ T* operator -> () const
 	{
 		return Object;
 	}
@@ -897,7 +897,7 @@ public:
 	 *
 	 * @return	Returns a reference to the pointer
 	 */
-	FORCEINLINE T*& Get()
+	/*FORCEINLINE*/ T*& Get()
 	{
 		return Object;
 	}
@@ -907,7 +907,7 @@ public:
 	 *
 	 * @return	Whether or not the pointer is valid
 	 */
-	FORCEINLINE bool IsValid() const
+	/*FORCEINLINE*/ bool IsValid() const
 	{
 		return Object != nullptr;
 	}
@@ -919,7 +919,7 @@ public:
 	 *
 	 * @return	Whether or not there was an error
 	 */
-	FORCEINLINE bool IsError() const
+	/*FORCEINLINE*/ bool IsError() const
 	{
 		return bError;
 	}
@@ -1001,7 +1001,7 @@ public:
 	 * @param Value The value to serialize.
 	 * @return This instance.
 	 */
-	template<class T> FORCEINLINE FArchive& operator<<(TCheckedObjPtr<T>& Value)
+	template<class T> /*FORCEINLINE*/ FArchive& operator<<(TCheckedObjPtr<T>& Value)
 	{
 		Value.bError = false;
 
@@ -1088,7 +1088,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, ANSICHAR& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, ANSICHAR& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1105,7 +1105,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, WIDECHAR& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, WIDECHAR& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1122,7 +1122,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, uint8& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, uint8& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1140,7 +1140,7 @@ public:
 	 * @param Value The value to serialize.
 	 */
 	template<class TEnum>
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, TEnumAsByte<TEnum>& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, TEnumAsByte<TEnum>& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1157,7 +1157,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, int8& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, int8& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1174,7 +1174,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, uint16& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, uint16& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1191,7 +1191,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, int16& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, int16& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1208,7 +1208,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, uint32& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, uint32& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1229,13 +1229,13 @@ public:
 protected:
 	virtual void SerializeBool( bool& D );
 public:
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, bool& D)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, bool& D)
 	{
 		Ar.SerializeBool(D);
 		return Ar;
 	}
 #else
-	FORCEINLINE friend FArchive& operator<<( FArchive& Ar, bool& D )
+	/*FORCEINLINE*/ friend FArchive& operator<<( FArchive& Ar, bool& D )
 	{
 		// Serialize bool as if it were UBOOL (legacy, 32 bit int).
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
@@ -1262,7 +1262,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, int32& Value)
+	/*FORCEINLINE*/FORCENOINLINE friend FArchive& operator<<(FArchive& Ar, int32& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1280,7 +1280,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, long& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, long& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1298,7 +1298,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<( FArchive& Ar, float& Value)
+	FORCENOINLINE friend FArchive& operator<<( FArchive& Ar, float& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1316,7 +1316,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, double& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, double& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1334,7 +1334,7 @@ public:
 	 * @param Ar The archive to serialize from or to.
 	 * @param Value The value to serialize.
 	 */
-	FORCEINLINE friend FArchive& operator<<(FArchive &Ar, uint64& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive &Ar, uint64& Value)
 	{
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 		if (!Ar.FastPathLoad<sizeof(Value)>(&Value))
@@ -1372,7 +1372,7 @@ public:
 		typename EnumType,
 		typename = typename TEnableIf<TIsEnumClass<EnumType>::Value>::Type
 	>
-	FORCEINLINE friend FArchive& operator<<(FArchive& Ar, EnumType& Value)
+	/*FORCEINLINE*/ friend FArchive& operator<<(FArchive& Ar, EnumType& Value)
 	{
 		return Ar << (__underlying_type(EnumType)&)Value;
 	}
@@ -1523,7 +1523,7 @@ public:
 	// Used to do byte swapping on small items. This does not happen usually, so we don't want it inline
 	void ByteSwap(void* V, int32 Length);
 
-	FORCEINLINE FArchive& ByteOrderSerialize(void* V, int32 Length)
+	/*FORCEINLINE*/ FArchive& ByteOrderSerialize(void* V, int32 Length)
 	{
 		if (!IsByteSwapping()) // Most likely case (hot path)
 		{
@@ -1700,7 +1700,7 @@ public:
 #if DEVIRTUALIZE_FLinkerLoad_Serialize
 private:
 	template<SIZE_T Size>
-	FORCEINLINE bool FastPathLoad(void* InDest)
+	/*FORCEINLINE*/ bool FastPathLoad(void* InDest)
 	{
 		const uint8* RESTRICT Src = ActiveFPLB->StartFastPathLoadBuffer;
 		if (Src + Size <= ActiveFPLB->EndFastPathLoadBuffer)
@@ -1741,7 +1741,7 @@ public:
 
 #else
 	template<SIZE_T Size>
-	FORCEINLINE bool FastPathLoad(void* InDest)
+	/*FORCEINLINE*/ bool FastPathLoad(void* InDest)
 	{
 		return false;
 	}

@@ -19,7 +19,7 @@ public:
 	bool Write(void* InData, int64 InOffset, int64 InNum);
 
 	/** Append data at the given offset. */
-	FORCEINLINE void Append(void* InData, int64 InNum)
+	/*FORCEINLINE*/ void Append(void* InData, int64 InNum)
 	{
 		Write(InData, NumBytes, InNum);
 	}
@@ -28,19 +28,19 @@ public:
 	bool Read(void* OutData, int64 InOffset, int64 InNum) const;
 
 	/** Gets the size of the data written. */
-	FORCEINLINE int64 GetSize() const
+	/*FORCEINLINE*/ int64 GetSize() const
 	{
 		return NumBytes;
 	}
 
 	/** Returns the written data.  */
-	FORCEINLINE uint8* GetData()
+	/*FORCEINLINE*/ uint8* GetData()
 	{
 		return Data;
 	}
 
 	/** Returns the written data.  */
-	FORCEINLINE const uint8* GetData() const
+	/*FORCEINLINE*/ const uint8* GetData() const
 	{
 		return Data;
 	}

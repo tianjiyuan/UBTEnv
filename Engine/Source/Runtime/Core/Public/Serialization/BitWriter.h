@@ -62,7 +62,7 @@ public:
 	/**
 	 * Returns a pointer to our internal buffer.
 	 */
-	FORCEINLINE uint8* GetData(void)
+	/*FORCEINLINE*/ uint8* GetData(void)
 	{
 #if !UE_BUILD_SHIPPING
 		// If this happens, your code has insufficient IsError() checks.
@@ -72,7 +72,7 @@ public:
 		return Buffer.GetData();
 	}
 
-	FORCEINLINE const uint8* GetData(void) const
+	/*FORCEINLINE*/ const uint8* GetData(void) const
 	{
 #if !UE_BUILD_SHIPPING
 		// If this happens, your code has insufficient IsError() checks.
@@ -82,7 +82,7 @@ public:
 		return Buffer.GetData();
 	}
 
-	FORCEINLINE const TArray<uint8>* GetBuffer(void) const
+	/*FORCEINLINE*/ const TArray<uint8>* GetBuffer(void) const
 	{
 #if !UE_BUILD_SHIPPING
 		// If this happens, your code has insufficient IsError() checks.
@@ -95,7 +95,7 @@ public:
 	/**
 	 * Returns the number of bytes written.
 	 */
-	FORCEINLINE int64 GetNumBytes(void) const
+	/*FORCEINLINE*/ int64 GetNumBytes(void) const
 	{
 		return (Num+7)>>3;
 	}
@@ -103,7 +103,7 @@ public:
 	/**
 	 * Returns the number of bits written.
 	 */
-	FORCEINLINE int64 GetNumBits(void) const
+	/*FORCEINLINE*/ int64 GetNumBits(void) const
 	{
 		return Num;
 	}
@@ -111,7 +111,7 @@ public:
 	/**
 	 * Returns the number of bits the buffer supports.
 	 */
-	FORCEINLINE int64 GetMaxBits(void) const
+	/*FORCEINLINE*/ int64 GetMaxBits(void) const
 	{
 		return Max;
 	}
@@ -126,12 +126,12 @@ public:
 	/**
 	 * Sets whether or not this writer intentionally allows overflows (to avoid logspam)
 	 */
-	FORCEINLINE void SetAllowOverflow(bool bInAllow)
+	/*FORCEINLINE*/ void SetAllowOverflow(bool bInAllow)
 	{
 		bAllowOverflow = bInAllow;
 	}
 
-	FORCEINLINE bool AllowAppend(int64 LengthBits)
+	/*FORCEINLINE*/ bool AllowAppend(int64 LengthBits)
 	{
 		//@TODO: FLOATPRECISION: This class pretends it is 64-bit aware, e.g., in the type of LengthBits and the Num/Max members, but it is not as the inner Buffer is a 32 bit TArray, etc...
 
@@ -158,7 +158,7 @@ public:
 		return true;
 	}
 
-	FORCEINLINE void SetAllowResize(bool NewResize)
+	/*FORCEINLINE*/ void SetAllowResize(bool NewResize)
 	{
 		bAllowResize = NewResize;
 	}
@@ -168,7 +168,7 @@ public:
 	 */
 	void Reset() override;
 
-	FORCEINLINE void WriteAlign()
+	/*FORCEINLINE*/ void WriteAlign()
 	{
 		Num = ( Num + 7 ) & ( ~0x07 );
 	}
